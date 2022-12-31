@@ -29,4 +29,35 @@ async function storeUsers(users) {
     return 'Users created and stored successfully';
 }
 
-export { storeUsers };
+// Search users using a search term.
+async function getUsers(searchTerm) {
+    // Search by name.
+    const nameResult = await client.search({
+        index: 'users',
+        query: {
+            match: {
+                name: searchTerm
+            }
+        }
+    });
+
+    // Search by email.
+    let emailResult = [];
+    // Regular expression to check if string is email
+    const regexExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/gi;
+    if (regexExp.test(searchTerm)) {
+        emailResult = await client.search({
+            index: 'users',
+            query: {
+                match: {
+                    email: searchTerm
+                }
+            }
+        });
+        return [...nameResult.hits.hits, ...emailResult.hits.hits];
+    }
+
+    return nameResult.hits.hits;
+}
+
+export { storeUsers, getUsers };
