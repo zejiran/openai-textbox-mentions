@@ -26,7 +26,7 @@ const generateUsers = async () => {
     const lines = data.split('\n').filter(str => str.trim() !== '');
     const users = [];
     for (const [index, line] of lines.entries()) {
-        const words = line.split(' ');
+        const words = line.trim().replace(/\s+/g, ' ').split(' ');
         const name = `${words[1]} ${words[2]}`;
         const email = words[words.length - 1];
         const label = index < 12 ? 'employee' : 'customer';

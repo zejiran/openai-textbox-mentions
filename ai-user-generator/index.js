@@ -24,7 +24,7 @@ const server = createServer((req, res) => {
     else if (pathname === '/users' && req.method === 'GET') {
         res.writeHead(200, { 'Content-Type': 'application/json' });
         if (Boolean(query.searchTerm)) {
-            getUsers(query.searchTerm)
+            getUsers(query.searchTerm.replace(' ', '').toLowerCase())
                 .then((users) => res.end(JSON.stringify(users)))
                 .catch(console.log);
         } else {

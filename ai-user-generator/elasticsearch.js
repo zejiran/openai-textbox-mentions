@@ -39,10 +39,14 @@ async function getUsers(searchTerm) {
             bool: {
                 should: [
                     {
-                        wildcard: { name: "*" + searchTerm + "*" }
+                        prefix: {
+                            name: searchTerm
+                        }
                     },
                     {
-                        wildcard: { email: "*" + searchTerm + "*" }
+                        prefix: {
+                            email: searchTerm
+                        }
                     }
                 ],
                 minimum_should_match: 1
