@@ -1,6 +1,7 @@
 import './config.js';
 import { Client } from '@elastic/elasticsearch';
 
+// Elasticsearch authentication.
 const client = new Client({
     cloud: {
         id: process.env.CLOUD_ID
@@ -11,6 +12,7 @@ const client = new Client({
     }
 });
 
+// Store generated users in Elasticsearch.
 async function storeUsers(users) {
     for (const user of users) {
         await client.index({
@@ -24,7 +26,7 @@ async function storeUsers(users) {
     }
 
     await client.indices.refresh({ index: 'users' });
-    return 'Users created successfully';
+    return 'Users created and stored successfully';
 }
 
 export { storeUsers };

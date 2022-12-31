@@ -7,6 +7,7 @@ const hostname = '127.0.0.1';
 const port = 3000;
 
 const server = createServer((req, res) => {
+    // User generation endpoint.
     if (req.url === '/generate/users' && req.method === 'GET') {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         generateUsers()
