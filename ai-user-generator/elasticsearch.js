@@ -14,13 +14,15 @@ const client = new Client({
 
 // Store generated users in Elasticsearch.
 async function storeUsers(users) {
+    const now = new Date();
     for (const user of users) {
         await client.index({
             index: 'users',
             body: {
                 name: user[0],
                 email: user[1],
-                label: user[2]
+                label: user[2],
+                timestamp: now,
             }
         })
     }
@@ -29,35 +31,44 @@ async function storeUsers(users) {
     return 'Users created and stored successfully';
 }
 
-// Search users using a search term.
+// Search users by name or email using a search term.
 async function getUsers(searchTerm) {
-    // Search by name.
-    const nameResult = await client.search({
+    const result = await client.search({
         index: 'users',
         query: {
-            match: {
-                name: searchTerm
+            bool: {
+                should: [
+                    {
+                        wildcard: { name: "*" + searchTerm + "*" }
+                    },
+                    {
+                        wildcard: { email: "*" + searchTerm + "*" }
+                    }
+                ],
+                minimum_should_match: 1
             }
-        }
+        },
+        size: 5,
     });
-
-    // Search by email.
-    let emailResult = [];
-    // Regular expression to check if string is email
-    const regexExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/gi;
-    if (regexExp.test(searchTerm)) {
-        emailResult = await client.search({
-            index: 'users',
-            query: {
-                match: {
-                    email: searchTerm
-                }
-            }
-        });
-        return [...nameResult.hits.hits, ...emailResult.hits.hits];
-    }
-
-    return nameResult.hits.hits;
+    return result.hits.hits;
 }
 
-export { storeUsers, getUsers };
+async function getLastCreatedUsers() {
+    const result = await client.search({
+        index: 'users',
+        query: {
+            match_all: {}
+        },
+        size: 25,
+        sort: [
+            {
+                timestamp: {
+                    order: "desc"
+                }
+            }
+        ]
+    });
+    return result.hits.hits;
+}
+
+export { storeUsers, getUsers, getLastCreatedUsers };

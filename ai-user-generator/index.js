@@ -1,7 +1,7 @@
 import './config.js';
 import { createServer } from 'http';
 import { generateUsers } from './generator.js';
-import { storeUsers, getUsers } from './elasticsearch.js';
+import { storeUsers, getUsers, getLastCreatedUsers } from './elasticsearch.js';
 import url from 'url';
 
 const hostname = '127.0.0.1';
@@ -23,9 +23,15 @@ const server = createServer((req, res) => {
     // User search endpoint
     else if (pathname === '/users' && req.method === 'GET') {
         res.writeHead(200, { 'Content-Type': 'application/json' });
-        getUsers(query.searchTerm)
-            .then((users) => res.end(JSON.stringify(users)))
-            .catch(console.log);
+        if (Boolean(query.searchTerm)) {
+            getUsers(query.searchTerm)
+                .then((users) => res.end(JSON.stringify(users)))
+                .catch(console.log);
+        } else {
+            getLastCreatedUsers()
+                .then((users) => res.end(JSON.stringify(users)))
+                .catch(console.log);
+        }
     }
     // Invalid route
     else {

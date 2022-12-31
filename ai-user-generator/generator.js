@@ -23,7 +23,7 @@ const generateUsers = async () => {
     console.log(`\nThe following users were created: ${data}`);
 
     // Split attributes and user type into data structure.
-    const lines = data.split('\n').slice(2, data.length - 1);
+    const lines = data.split('\n').filter(str => str.trim() !== '');
     const users = [];
     for (const [index, line] of lines.entries()) {
         const words = line.split(' ');
