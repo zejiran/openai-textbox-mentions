@@ -11,8 +11,8 @@ OpenAI GPT API, half are employees and the remaining customers.
 */
 const generateUsers = async () => {
     const response = await openai.createCompletion({
-        model: "text-davinci-003",
-        prompt: "Generate 25 random names and emails",
+        model: 'text-davinci-003',
+        prompt: 'Generate 25 random names and emails',
         temperature: 0.5,
         max_tokens: 1024,
     });
@@ -26,11 +26,11 @@ const generateUsers = async () => {
         const words = line.split(' ');
         const name = `${words[1]} ${words[2]}`;
         const email = words[words.length - 1];
-        const label = index < 12 ? "employee" : "customer";
-        users.push(name, email, label);
+        const label = index < 12 ? 'employee' : 'customer';
+        users.push([name, email, label]);
     }
 
     return users;
 }
 
-export { generateUsers }
+export { generateUsers };
