@@ -6,11 +6,10 @@ import LastCreatedUsers from './components/LastCreatedUsers';
 import MentionsTextBox from './components/MentionsTextBox';
 import { Context } from './Context.jsx';
 
-const serverHostname = '34.82.208.172';
-const serverPort = '8080';
+const serverURL = 'https://ai-users.onrender.com';
 
 export async function getLastCreatedUsers() {
-  const result = await fetch(`https://${serverHostname}:${serverPort}/users`)
+  const result = await fetch(`${serverURL}/users`)
     .then((response) => response.json())
     .catch((err) => {
       console.log(err.message);
@@ -19,7 +18,7 @@ export async function getLastCreatedUsers() {
 }
 
 export async function searchUsers(term) {
-  const result = await fetch(`https://${serverHostname}:${serverPort}/users?searchTerm=${term}`)
+  const result = await fetch(`${serverURL}/users?searchTerm=${term}`)
     .then((response) => response.json())
     .catch((err) => {
       console.log(err.message);
@@ -28,7 +27,7 @@ export async function searchUsers(term) {
 }
 
 export async function generateUsers() {
-  const result = await fetch(`https://${serverHostname}:${serverPort}/generate/users`)
+  const result = await fetch(`${serverURL}/generate/users`)
     .then((response) => response.json())
     .catch((err) => {
       console.log(err.message);

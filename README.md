@@ -19,7 +19,7 @@ OpenAI GPT generator for storing mock users in Elasticsearch and show them in a 
 - React.
 - OpenAI API.
 - Elasticsearch.
-- Google Cloud Platform.
+- Render.
 - Vercel.
 
 ## Usage
@@ -42,7 +42,7 @@ You can demo directly this project by going to [this website](https://openai-tex
 ### Frontend Initialization
 
 1. cd `./user-mentions-dashboard`.
-2. Configure server hostname and port variables in `src/App.js`.
+2. Configure server URL variable in `src/App.js`.
 3. Install dependencies with `npm install`.
 4. Run the app in the development mode with `npm start`.
 
@@ -50,7 +50,7 @@ You can demo directly this project by going to [this website](https://openai-tex
 
 ### AI User Generator
 
-You can go to `http://<hostname>:<port>/generate/users` for testing the creation of 25 users with GPT, split them into customers or employees, and then store these in a Elasticsearch index.
+You can go to `https://<hostname>:<port>/generate/users` for testing the creation of 25 users with GPT, split them into customers or employees, and then store these in a Elasticsearch index.
 
 First, this would generate names and emails using OpenAI API.
 
@@ -62,11 +62,11 @@ Then store it in a Elasticsearch index.
 
 ### Users Endpoint
 
-There is an endpoint for obtaining the last 25 created users.
+Go to `https://<hostname>:<port>/users` endpoint for obtaining the last 25 created users.
 
 <img src="https://user-images.githubusercontent.com/30379522/210186579-641cb289-0e35-4ca2-b33c-ad69d2e71202.png" alt="Get Users Endpoint" border="0" style="width: 80%">
 
-There is another endpoint for obtaining users according to a search term, send as a query param.
+Go to `https://<hostname>:<port>/users?searchTerm=` for obtaining users according to a search term, send as a query param.
 
 <img src="https://user-images.githubusercontent.com/30379522/210186576-c9ae2550-2856-49c5-94f4-647b142bc78a.png" alt="Search Term Endpoint" border="0" style="width: 80%">
 
