@@ -10,7 +10,7 @@ const serverHostname = '34.82.208.172';
 const serverPort = '8080';
 
 export async function getLastCreatedUsers() {
-  const result = await fetch(`http://${serverHostname}:${serverPort}/users`)
+  const result = await fetch(`https://${serverHostname}:${serverPort}/users`)
     .then((response) => response.json())
     .catch((err) => {
       console.log(err.message);
@@ -19,7 +19,7 @@ export async function getLastCreatedUsers() {
 }
 
 export async function searchUsers(term) {
-  const result = await fetch(`http://${serverHostname}:${serverPort}/users?searchTerm=${term}`)
+  const result = await fetch(`https://${serverHostname}:${serverPort}/users?searchTerm=${term}`)
     .then((response) => response.json())
     .catch((err) => {
       console.log(err.message);
@@ -28,7 +28,7 @@ export async function searchUsers(term) {
 }
 
 export async function generateUsers() {
-  const result = await fetch(`http://${serverHostname}:${serverPort}/generate/users`)
+  const result = await fetch(`https://${serverHostname}:${serverPort}/generate/users`)
     .then((response) => response.json())
     .catch((err) => {
       console.log(err.message);
