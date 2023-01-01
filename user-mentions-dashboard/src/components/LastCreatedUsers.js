@@ -15,7 +15,7 @@ export default function LastCreatedUsers() {
         return (
             <div>
                 <h3>Last 25 created users</h3>
-                <div className="last-users-table">
+                <div className='last-users-table'>
                     <h3>Customers</h3>
                     <table>
                         <thead>

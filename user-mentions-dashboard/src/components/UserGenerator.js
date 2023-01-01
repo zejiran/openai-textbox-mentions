@@ -51,7 +51,7 @@ export default function UserGenerator(props) {
             <GeneratorButton
                 onClick={handleGeneratorClick}
                 endIcon={<SendIcon />}
-                variant="contained"
+                variant='contained'
             >
                 Let's go
             </GeneratorButton>

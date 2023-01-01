@@ -4,7 +4,7 @@ import aiLogo from './../assets/ai-logo.json'
 
 export default function Header() {
     return (
-        <div className="text-container">
+        <div className='text-container'>
             <h1>OpenAI Text Box Mentions</h1>
             <p className='regular-text'>This is an OpenAI GPT generator for storing mock
                 users in Elasticsearch and show them in a React mentions style text box.</p>
