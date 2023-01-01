@@ -1,4 +1,3 @@
-import './config.js';
 import { Client } from '@elastic/elasticsearch';
 
 // Elasticsearch authentication.

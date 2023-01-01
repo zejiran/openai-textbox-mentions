@@ -4,8 +4,8 @@ import { generateUsers } from './generator.js';
 import { storeUsers, getUsers, getLastCreatedUsers } from './elasticsearch.js';
 import url from 'url';
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const hostname = process.env.HOST;
+const port = process.env.PORT;
 
 const server = createServer((req, res) => {
     const parsedUrl = url.parse(req.url);
