@@ -1,5 +1,6 @@
 .app {
   text-align: center;
+  padding: 5% 0;
   background-color: #311739;
   min-height: 100vh;
   display: flex;
@@ -11,9 +12,66 @@
 }
 
 .text-container {
-  max-width: 60%;
+  max-width: 70%;
 }
 
 .lottie {
   height: 100px;
+}
+
+.last-users-table {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin: 1rem 0;
+  font-size: 14px;
+}
+
+.last-users-table .column:nth-child(2) {
+  margin-left: 1rem;
+}
+
+.last-users-table .row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  width: 70%;
+}
+
+.last-users-table .column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 50%;
+  margin: 0.5rem 0;
+}
+
+.last-users-table table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.last-users-table th,
+.last-users-table td {
+  padding: 0.5rem;
+  text-align: left;
+  border: 1px solid #444;
+}
+
+.last-users-table th {
+  font-weight: bold;
+  background-color: #444;
+}
+
+.last-users-table tr:nth-child(even) {
+  background-color: #333;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
 }
