@@ -4,8 +4,8 @@
 
 - [Overview](#overview)
 - [Used Technologies](#used-technologies)
-- [Features](#features)
 - [Usage](#usage)
+- [Features](#features)
 - [License](#license)
 
 ## Overview
@@ -19,12 +19,12 @@ OpenAI GPT generator for storing mock users in Elasticsearch and show them in a 
 - React.
 - OpenAI API.
 - Elasticsearch.
-- Google Cloud Platform
-- Vercel
+- Google Cloud Platform.
+- Vercel.
 
 ## Usage
 
-You can demo directly this project by going to https://[TODO] or instead configure your own deployment as explained below.
+You can demo directly this project by going to [this website](https://openai-textbox-mentions.vercel.app/) or instead configure your own deployment as explained below.
 
 ### Backend Initialization
 
@@ -52,7 +52,23 @@ You can demo directly this project by going to https://[TODO] or instead configu
 
 You can go to `http://<hostname>:<port>/generate/users` for testing the creation of 25 users with GPT, split them into customers or employees, and then store these in a Elasticsearch index.
 
-[image]
+First, this would generate names and emails using OpenAI API.
+
+<img src="https://user-images.githubusercontent.com/30379522/210186577-b56cf047-8a8c-4246-b581-a7f40afb520d.png" alt="OpenAI User Generation" border="0" style="width: 50%">
+
+Then store it in a Elasticsearch index.
+
+<img src="https://user-images.githubusercontent.com/30379522/210186578-ee8acfea-a3d4-419d-bdcb-cb60e38c21f3.png" alt="Elasticsearch Storage" border="0" style="width: 70%">
+
+### Users Endpoint
+
+There is an endpoint for obtaining the last 25 created users.
+
+<img src="https://user-images.githubusercontent.com/30379522/210186579-641cb289-0e35-4ca2-b33c-ad69d2e71202.png" alt="Get Users Endpoint" border="0" style="width: 80%">
+
+There is another endpoint for obtaining users according to a search term, send as a query param.
+
+<img src="https://user-images.githubusercontent.com/30379522/210186576-c9ae2550-2856-49c5-94f4-647b142bc78a.png" alt="Search Term Endpoint" border="0" style="width: 80%">
 
 ## User Mentions Dashboard
 
