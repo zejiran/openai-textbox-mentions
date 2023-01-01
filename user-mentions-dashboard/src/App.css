@@ -15,8 +15,13 @@
   max-width: 70%;
 }
 
+.title {
+  padding-top: 3rem;
+}
+
 .lottie {
   height: 100px;
+  padding-bottom: 3.5rem;
 }
 
 .last-users-table {
