@@ -1,10 +1,12 @@
-import * as React from 'react';
+import React, { useRef } from 'react';
 import { searchUsers } from '../App.js';
 
 export default function MentionsTextBox() {
-    const [input, setInput] = React.useState('')
+    const [input, setInput] = React.useState('');
     const [open, setOpen] = React.useState(false);
     const [suggestions, setSuggestions] = React.useState([]);
+    const [inputColor, setInputColor] = React.useState('');
+    const ref = useRef(null);
 
     React.useEffect(() => {
         if (!open) {
@@ -15,9 +17,12 @@ export default function MentionsTextBox() {
     const handleChange = (event) => {
         let text = event.target.value;
         setInput(text);
+
         let term = input;
         if (term.startsWith('@')) { term = input.slice(1); }
         searchUsers(term).then((data) => setSuggestions(data));
+
+        setInputColor('');
     };
 
     function getOptionLabel(option) {
@@ -28,9 +33,9 @@ export default function MentionsTextBox() {
     function getOptionColor(option) {
         let color;
         if (option._source.label === 'employee') {
-            color = 'red';
+            color = 'darkred';
         } else if (option._source.label === 'customer') {
-            color = 'blue';
+            color = '#0066CC';
         }
         return color;
     }
@@ -44,19 +49,21 @@ export default function MentionsTextBox() {
                 These mentions would highlight according to the corresponding user role.
             </p>
             <input
+                ref={ref}
                 className='mentions-textbox'
                 type='text'
                 placeholder="Mention a user name with '@' or type a valid email..."
+                style={{ backgroundColor: inputColor, color: Boolean(inputColor) ? 'white' : '' }}
                 value={input}
                 onChange={handleChange}
-                onSelect={() => { setOpen(true); }}
+                onSelect={() => { setOpen(true); ref.current?.scrollIntoView({ behavior: 'smooth' }); }}
             />
             {open & (input.includes('@')) ?
                 <ul className="user-suggestions">
                     {suggestions.map(user =>
                         <li
                             key={user._id}
-                            onClick={() => { setInput(user._source.name); }}
+                            onClick={() => { setInput(user._source.name); setInputColor(getOptionColor(user)); console.log(inputColor) }}
                             style={{ color: getOptionColor(user) }}
                             className='list-items'
                         >
