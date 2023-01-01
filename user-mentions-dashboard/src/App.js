@@ -11,19 +11,28 @@ const serverPort = '8080';
 
 export async function getLastCreatedUsers() {
   const result = await fetch(`http://${serverHostname}:${serverPort}/users`)
-  .then((response) => response.json())
-  .catch((err) => {
-    console.log(err.message);
-  });
+    .then((response) => response.json())
+    .catch((err) => {
+      console.log(err.message);
+    });
+  return result;
+}
+
+export async function searchUsers(term) {
+  const result = await fetch(`http://${serverHostname}:${serverPort}/users?searchTerm=${term}`)
+    .then((response) => response.json())
+    .catch((err) => {
+      console.log(err.message);
+    });
   return result;
 }
 
 export async function generateUsers() {
   const result = await fetch(`http://${serverHostname}:${serverPort}/generate/users`)
-  .then((response) => response.json())
-  .catch((err) => {
-    console.log(err.message);
-  });
+    .then((response) => response.json())
+    .catch((err) => {
+      console.log(err.message);
+    });
   return result;
 }
 

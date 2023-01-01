@@ -22,18 +22,6 @@ OpenAI GPT generator for storing mock users in Elasticsearch and show them in a 
 - Google Cloud Platform
 - Vercel
 
-## Features
-
-### AI User Generator
-
-You can go to `http://<hostname>:<port>/generate/users` for testing the creation of 25 users with GPT, split them into customers or employees, and then store these in a Elasticsearch index.
-
-[image]
-
-## User Mentions Dashboard
-
-
-
 ## Usage
 
 You can demo directly this project by going to https://[TODO] or instead configure your own deployment as explained below.
@@ -57,6 +45,18 @@ You can demo directly this project by going to https://[TODO] or instead configu
 2. Configure server hostname and port variables in `src/App.js`.
 3. Install dependencies with `npm install`.
 4. Run the app in the development mode with `npm start`.
+
+## Features
+
+### AI User Generator
+
+You can go to `http://<hostname>:<port>/generate/users` for testing the creation of 25 users with GPT, split them into customers or employees, and then store these in a Elasticsearch index.
+
+[image]
+
+## User Mentions Dashboard
+
+
 
 ## License
 

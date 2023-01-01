@@ -54,7 +54,6 @@ export default function LastCreatedUsers() {
                 </div>
             </div>
         );
-    } else {
-        return (<div></div>);
     }
+    return (<div><h3>There are not users created</h3></div>);
 }
