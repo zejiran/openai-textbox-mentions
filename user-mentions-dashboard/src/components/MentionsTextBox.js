@@ -19,17 +19,19 @@ export default function MentionsTextBox() {
         setInput(text);
 
         let term = input;
-        if (term.startsWith('@')) { term = input.slice(1); }
+        if (term.startsWith('@')) {
+            term = input.slice(1);
+        } else {
+            term = input.split('@')[0]
+        }
         searchUsers(term).then((data) => setSuggestions(data));
 
         setInputColor('');
     };
 
     function getOptionLabel(option) {
-        let label = `${option._source.name} - ${option._source.label}`;
-        return label;
+        return `${option._source.name} - ${option._source.label} (${option._source.email})`;
     }
-
     function getOptionColor(option) {
         let color;
         if (option._source.label === 'employee') {
@@ -38,6 +40,12 @@ export default function MentionsTextBox() {
             color = '#0066CC';
         }
         return color;
+    }
+
+    function setMention(user) {
+        setInput(getOptionLabel(user));
+        setInputColor(getOptionColor(user));
+        setOpen(false);
     }
 
     return (
@@ -63,7 +71,7 @@ export default function MentionsTextBox() {
                     {suggestions.map(user =>
                         <li
                             key={user._id}
-                            onClick={() => { setInput(user._source.name); setInputColor(getOptionColor(user)); console.log(inputColor) }}
+                            onClick={() => { setMention(user); }}
                             style={{ color: getOptionColor(user) }}
                             className='list-items'
                         >
