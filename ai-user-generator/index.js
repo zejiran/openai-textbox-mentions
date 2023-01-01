@@ -8,6 +8,7 @@ const hostname = process.env.HOST;
 const port = process.env.PORT;
 
 const server = createServer((req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const parsedUrl = url.parse(req.url);
     const pathname = parsedUrl.pathname;
     const query = url.parse(req.url, true).query;
