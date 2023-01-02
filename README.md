@@ -70,9 +70,27 @@ Go to `https://<hostname>:<port>/users?searchTerm=` for obtaining users accordin
 
 <img src="https://user-images.githubusercontent.com/30379522/210186576-c9ae2550-2856-49c5-94f4-647b142bc78a.png" alt="Search Term Endpoint" border="0" style="width: 80%">
 
-## User Mentions Dashboard
+### User Mentions Dashboard
 
+In this dashboard you will find a generator button for creating 25 new users.
 
+<img src="https://user-images.githubusercontent.com/30379522/210187703-9c04dadf-89eb-4842-a7ac-ef3a8dab4bbc.png" alt="Generator Button" border="0" style="width: 90%">
+
+Here you can find two tables showing last customers and employees stored in Elasticsearch.
+
+<img src="https://user-images.githubusercontent.com/30379522/210187704-6f3f1b01-b4fd-4d00-9eb4-2bcac7a786ca.png" alt="Last Generated Users" border="0" style="width: 90%">
+
+Finally, you will find a text box where you can mention users by name, typing '@'.
+
+<img src="https://user-images.githubusercontent.com/30379522/210187705-e77d7a3c-e90b-401c-8e38-fda37db97cb1.png" alt="Mention by Name" border="0" style="width: 90%">
+
+When you click on a user from the list of match coincidences, their name will appear highlighted in the text box according to their role.
+
+<img src="https://user-images.githubusercontent.com/30379522/210187706-e45584e3-74b6-4b6c-b2d5-eb5f38a3a58d.png" alt="Highlight by Role" border="0" style="width: 90%">
+
+This text box also allows to search by email.
+
+<img src="https://user-images.githubusercontent.com/30379522/210187707-f678a58e-4794-40c1-9dd0-568fe89ae9ed.png" alt="Mention by email" border="0" style="width: 90%">
 
 ## License
 
